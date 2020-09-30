@@ -8,15 +8,35 @@ import SliderItem from "./SliderItems";
 function My_Works() {
   const arr = [Photo_1, Photo_2, Photo_3, Photo_4];
 
+  const [count, nextSet] = React.useState(1);
+
+  nextSet(function lol(count) {
+    return count++;
+  });
+
+  // let [a, newarr] = React.useState();
+
+  // function lol() {
+  //   newarr(
+  //     a.map((element) => {
+  //       return element * 3;
+  //     })
+  //   );
+  // }
+  console.log(count);
   return (
     <div className="My_Works">
       <h1 className="title_Works">My Works</h1>
-      <div className="Slider">
+      <div className="Slider" id="slider">
         <div className="Left_Arrow">&larr;</div>
-        {arr.map((element) => {
-          return <SliderItem url={element} />;
-        })}
-        <div className="Roght_Arrow">&rarr;</div>
+        <div className="Slider_Container">
+          {arr.map((element) => {
+            return <SliderItem url={element} />;
+          })}
+        </div>
+        <div className="Right_Arrow" onClick={nextSet}>
+          &rarr;
+        </div>
       </div>
     </div>
   );
